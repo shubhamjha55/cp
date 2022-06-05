@@ -1,0 +1,34 @@
+const int N = 1e3 + 5;
+bool prime[N];
+int lp[N];
+int gp[N];
+void solve(){
+    memset(prime, true, sizeof(prime));
+    prime[0] = prime[1] = false;
+    for(int i = 2; i <= N; i++){
+        if(prime[i]){
+            lp[i] = gp[i] = i;
+            for(int p = 2 * i; p <= N; p += i){
+                prime[p] = false;
+                gp[p] = i;
+                if(lp[p] == 0) lp[p] = i;
+            }
+        }
+    }
+    for(int i = 2; i < N; i++){
+        // if use i * i <= n & p = i * i then primes lp and gp not calculated but prime does why
+        // if(prime[i]){
+        //     cout << i << " " << lp[i] << " " << gp[i] << nline;
+        // }
+        // cout << i << " " << lp[i] << " " << gp[i] << nline;
+    }
+    // Prime factors
+    int t = 40;
+    while(t > 1){
+        int l = gp[t]; // can use lp 
+        while(t % l == 0){
+            t /= l;
+            cout << l << " ";
+        }
+    }
+}

@@ -1,3 +1,20 @@
+
+// BINARY EXPONENTIATION
+long long binpow(long long a, long long b) {
+    long long res = 1;
+    while (b > 0) {
+        if (b & 1)
+            res = res * a;
+        a = a * a;
+        b >>= 1;
+    }
+    return res;
+}
+
+
+
+//PRIME NUMBERS
+
 const int N = 1e3 + 5;
 bool prime[N];
 int lp[N];
@@ -28,7 +45,7 @@ void solve(){
     
     
     
-    // Prime factors
+// PRIME FACTORS
     int t = 40;
     while(t > 1){
         int l = gp[t]; // can use lp 
@@ -41,7 +58,7 @@ void solve(){
     
     
     
-    // Divisors of all number till N
+// DIVISOR OF ALL NUMBER TILL N
     int N = 20;
     vector<int> divisors[N];
     for(int i = 2; i <= N; i++){

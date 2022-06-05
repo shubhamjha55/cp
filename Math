@@ -5,10 +5,10 @@ int gp[N];
 void solve(){
     memset(prime, true, sizeof(prime));
     prime[0] = prime[1] = false;
-    for(int i = 2; i <= N; i++){
+    for(int i = 2; i <= N; i++){ // i * i for nly prime
         if(prime[i]){
             lp[i] = gp[i] = i;
-            for(int p = 2 * i; p <= N; p += i){
+            for(int p = 2 * i; p <= N; p += i){ // i * i for only prime
                 prime[p] = false;
                 gp[p] = i;
                 if(lp[p] == 0) lp[p] = i;
@@ -22,6 +22,12 @@ void solve(){
         // }
         // cout << i << " " << lp[i] << " " << gp[i] << nline;
     }
+}
+    
+    
+    
+    
+    
     // Prime factors
     int t = 40;
     while(t > 1){
@@ -30,5 +36,23 @@ void solve(){
             t /= l;
             cout << l << " ";
         }
+    }
+    
+    
+    
+    
+    // Divisors of all number till N
+    int N = 20;
+    vector<int> divisors[N];
+    for(int i = 2; i <= N; i++){
+        for(int j = i; j < N; j += i){
+            divisors[j].push_back(i);
+        }
+    }
+    for(int i = 0; i < N; i++){
+        cout << i << " : ";
+        for(int div : divisors[i]){
+            cout << div << " ";
+        }cout << nline;
     }
 }

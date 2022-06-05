@@ -1,5 +1,6 @@
 
-// BINARY EXPONENTIATION
+// BINARY EXPONENTIATION LOG N 
+//3^13 == 3^1011 == 3^8 3^4 3^1
 long long binpow(long long a, long long b) {
     long long res = 1;
     while (b > 0) {

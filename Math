@@ -25,6 +25,8 @@ long long binpow(long long a, long long b, long long m) {
     }
     return res;
 }
+INVERSE OF a
+binpow(a, m - 2, m);
 
 //PRIME NUMBERS
 

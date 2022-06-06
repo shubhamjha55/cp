@@ -55,8 +55,17 @@ void solve(){
         // cout << i << " " << lp[i] << " " << gp[i] << nline;
     }
 }
-    
-    
+
+// Greatest PRIME FACTOR same asabove
+    memset(greatestPF, 0, sizeof(greatestPF));
+        greatestPF[1] = 2;
+        for(int i = 2; i <= N; i++){
+            if(greatestPF[i] == 0){
+                for(int j = i; j <= N; j += i){
+                    greatestPF[j] = i;
+                }
+            }
+        } 
     
     
     

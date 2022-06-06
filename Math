@@ -61,12 +61,14 @@ void solve(){
     
     
 // PRIME FACTORS
-    int t = 40;
-    while(t > 1){
-        int l = gp[t]; // can use lp 
-        while(t % l == 0){
-            t /= l;
-            cout << l << " ";
+    for(int i = 3; i <= N; i++){
+        int t = i;
+        while(t > 1){
+            int g = greatestPF[t];
+            PF[i].push_back(g);
+            while(t % g == 0){
+                t /= g;
+            }
         }
     }
     

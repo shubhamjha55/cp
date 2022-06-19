@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define gc getchar_unlocked
+#define fo(i,n) for(i=0;i<n;i++)
+#define Fo(i,k,n) for(i=k;k<n?i<n:i>n;k<n?i+=1:i-=1)
+#define ll long long
+#define nline "\n"
+
+const int N = 5e5;
+int pd[N + 1];
+void solve(){
+    int n;
+    cin >> n;
+    int f = n;
+    unordered_map<int, int> um;
+    while(n > 1){
+        int freq = 0, t = pd[n];
+        while(n % t == 0){
+            freq++;
+            n /= pd[n];
+        }
+        um[t] = freq;
+    }
+    int res = 1;
+    for(auto &a : um){
+        //cout << a.first << " " << a.second << nline;
+        res *= (pow(a.first, a.second + 1) - 1) / (a.first - 1);
+    }
+    cout << res - f << nline;
+
+}
+void leastdivisor(){
+    pd[0] = pd[1] = 1;
+    for(int i = 2; i <= N; i++){
+        if(pd[i] == 0){
+            for(int j = i; j <= N; j += i){
+                if(!pd[j]) pd[j] = i;
+            }
+        }
+    }
+}
+int main() {
+    leastdivisor();
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    int tc = 1;
+    cin>>tc;
+    while(tc--) {
+        solve();
+    }
+    return 0;
+}
